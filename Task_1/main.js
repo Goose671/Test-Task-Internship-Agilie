@@ -1,20 +1,24 @@
 const fs = require('fs');
+const inputData = require('./input.json');
 
+let results = [];
 
+inputData.forEach((item) =>{
 
-function findNum() {
-    const [x, y] = require('./input.json')
-
-    let result = {
-        itIsPossible: false
-    }
-
+    let x = item.from;
+    let y = item.to;
     let multiplied = x;
     let increased = x;
 
+    let result = {
+        from: x,
+        to: y,
+        itIsPossible: false
+    };
+
     if (x === y) result.itIsPossible = true;
 
-    for (let i = 1; multiplied < y || increased < y; i++) {
+    while( multiplied < y || increased < y) {
 
         multiplied = multiplied * 2;
         increased = +`${increased}1`;
@@ -22,12 +26,10 @@ function findNum() {
         if (multiplied == y || increased == y) {
             result.itIsPossible = true;
             break;
-        }
+        };
     };
-     
-    fs.writeFileSync('output.json', JSON.stringify(result))
-}
- 
-findNum(10, 80);
 
+    results.push(result);
 
+    fs.writeFileSync('output.json', JSON.stringify(results));
+});
