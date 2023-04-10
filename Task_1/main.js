@@ -5,25 +5,25 @@ let results = [];
 
 inputData.forEach((item) =>{
 
-    let x = item.from;
-    let y = item.to;
-    let multiplied = x;
-    let increased = x;
+    const {from, to} = item
+
+    let multiplied = from;
+    let increased = from;
 
     let result = {
-        from: x,
-        to: y,
+        from: from,
+        to: to,
         itIsPossible: false
     };
 
-    if (x === y) result.itIsPossible = true;
+    if (from === to) result.itIsPossible = true;
 
-    while( multiplied < y || increased < y) {
+    while( multiplied < to || increased < to) {
 
         multiplied = multiplied * 2;
         increased = +`${increased}1`;
 
-        if (multiplied == y || increased == y) {
+        if (multiplied == to || increased == to) {
             result.itIsPossible = true;
             break;
         };
