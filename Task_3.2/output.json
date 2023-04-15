@@ -1,0 +1,86 @@
+[
+    {
+        "id": 1,
+        "sizes": [
+            "S",
+            "M"
+        ],
+        "receivedTShirt": "S"
+    },
+    {
+        "id": 2,
+        "sizes": [
+            "S"
+        ],
+        "receivedTShirt": [
+            "S"
+        ]
+    },
+    {
+        "id": 3,
+        "sizes": [
+            "M"
+        ],
+        "receivedTShirt": [
+            "M"
+        ]
+    },
+    {
+        "id": 4,
+        "sizes": [
+            "M",
+            "L"
+        ],
+        "receivedTShirt": "L"
+    },
+    {
+        "id": 5,
+        "sizes": [
+            "XL",
+            "XXL"
+        ],
+        "receivedTShirt": "XL"
+    },
+    {
+        "id": 6,
+        "sizes": [
+            "S",
+            "M"
+        ],
+        "receivedTShirt": "S"
+    },
+    {
+        "id": 7,
+        "sizes": [
+            "S"
+        ],
+        "receivedTShirt": [
+            "S"
+        ]
+    },
+    {
+        "id": 8,
+        "sizes": [
+            "M"
+        ],
+        "receivedTShirt": [
+            "M"
+        ]
+    },
+    {
+        "id": 9,
+        "sizes": [
+            "M",
+            "L"
+        ],
+        "receivedTShirt": "L"
+    },
+    {
+        "id": 10,
+        "sizes": [
+            "XL",
+            "XXL"
+        ],
+        "receivedTShirt": "XXL"
+    }
+]
