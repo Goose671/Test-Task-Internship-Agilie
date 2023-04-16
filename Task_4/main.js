@@ -28,7 +28,6 @@ function findGoodPlaces(scene) {
                 }
             }
         }
-        console.log(places)
     }
     fs.writeFileSync('output.json', JSON.stringify(`Managed to find ${places} good places for the spotlight`));
 }
