@@ -1,9 +1,9 @@
 const fs = require('fs');
 const inputData = require('./input.json');
 
-let places = 0;
 
 function findGoodPlaces(scene) {
+    const result = { places: [], positions: 0 };
 
     for (let i = 0; i < scene.length; i++) {
         const level = scene[i];
@@ -11,25 +11,36 @@ function findGoodPlaces(scene) {
             const actor = scene[i][j];
             if (!actor) {
                 for (k = 0; k < level.length; k++) {
-
-                    const prevOrNextActor = scene[i][k]
-
-                    if (prevOrNextActor && k <= j + 1 && k >= j - 1) {
-                        places++;
+                    const actorX = scene[i][k];
+                    if (actorX && k < j) {
+                        result.places.push({ x: i, y: j, direction: 'left'})
+                        k=j;
+                        continue;
+                    } 
+                    if (actorX && k > j) {
+                        result.places.push({ x: i, y: j, direction: 'right'})
+                        break;
                     }
                 }
-                if (i - 1 > -1) {
-                    const prevLevel = scene[i - 1][j]
-                    if (prevLevel) { places++; }
-                }
-                if (i + 1 < scene.length) {
-                    const nextLevel = scene[i + 1][j]
-                    if (nextLevel) { places++; }
+
+                for (let d = 0; d<scene.length; d++) {
+                    const actorY = scene[d][j];
+                    if (actorY && d < i) {
+                        result.places.push({ x: i, y: j, direction: 'top'})
+                        d=i;
+                        continue;
+                    }
+                    if (actorY && d > i) {
+                        result.places.push({ x: i, y: j, direction: 'bottom'})
+                        break;
+                    }
                 }
             }
         }
     }
-    fs.writeFileSync('output.json', JSON.stringify(`Managed to find ${places} good places for the spotlight`));
+
+    result.positions = result.places.length;
+    fs.writeFileSync('output.json', JSON.stringify(result));
 }
 
 findGoodPlaces(inputData);

@@ -8,21 +8,18 @@ const combinedLoaders = loaders.concat(lbsLoaders).sort((a, b) => a - b);
 let results = [];
 
 inputData.forEach(item => {
-
-    item += 0.5;
     let currentWeight = 20;
     let remainingWeight = item - currentWeight;
     let remainingSpace = 12;
     const variants = [];
     const loadersCopy = [...combinedLoaders];
 
-    for (let k = 1; k < 15; k++) {
-        
+    while(loadersCopy) {
         for (let i = loadersCopy.length - 1; i >= 0; i--) {
-
             while (remainingWeight >= loadersCopy[i] * 2) {
-                if (remainingSpace === 0) { break }
-                currentWeight += loadersCopy[i] * 2
+                if (remainingSpace === 0) break;
+
+                currentWeight += loadersCopy[i] * 2;
                 remainingWeight = item - currentWeight;
                 remainingSpace -= 1;
             };
@@ -34,7 +31,6 @@ inputData.forEach(item => {
         loadersCopy.splice(loadersCopy.length - 1, 1);
     };
 
-    item -= 0.5;
     const filteredVariants = variants.filter(variant => variant > item);
     const result = Math.min(...filteredVariants);
     results.push(result);    
